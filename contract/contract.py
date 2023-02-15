@@ -1,5 +1,5 @@
 from contract_status import ContractStatus
-from contract_category import ContractCategory
+from contract_info import ContractInfo
 
 
 class Contract:
@@ -7,7 +7,7 @@ class Contract:
         self, 
         contract_id: str,
         contract_name: str,
-        contract_category: ContractCategory,
+        contract_info: ContractInfo,
         contract_status: int) -> None:
 
         if len(contract_name) > 256:
@@ -18,7 +18,7 @@ class Contract:
 
         self._contract_id = contract_id
         self._contract_name = contract_name
-        self._contract_category = contract_category
+        self._contract_info = contract_info
         self._contract_status = contract_status
 
     @property
@@ -31,8 +31,8 @@ class Contract:
 
 
     @property
-    def contract_category(self) -> ContractCategory:
-        return self._contract_category
+    def contract_info(self) -> ContractInfo:
+        return self._contract_info
 
 
     @property
@@ -44,7 +44,7 @@ class Contract:
         self._contract_status = value
 
 if __name__ == "__main__":
-    category = ContractCategory('1', 'NDA')
-    test_contract = Contract("123", "秘密保持契約", category, ContractStatus.not_checked.value)
+    info = ContractInfo(1, '秘密保持契約', '契約書内容'*100)
+    test_contract = Contract("123", "秘密保持契約", info, ContractStatus.not_checked.value)
     test_contract.contract_status = ContractStatus.check_done.value
     
