@@ -21,6 +21,24 @@ def condition_check(level):
 def convert_date(date_string):
     return datetime.datetime.strptime(date_string, "yyyy-MM-dd")
 
+
+def check_data(data):
+        if data:
+            for item in data:
+                if item > 10:
+                    for i in range(item):
+                        if i % 2 == 0:
+                            print(f"Even: {i}")
+                        else:
+                            if i > 5:
+                                print(f"Odd and greater than 5: {i}")
+                            else:
+                                print(f"Odd and less than or equal to 5: {i}")
+                else:
+                    print("Item is 10 or less")
+        else:
+            print("No data")
+
 def create_keyword_args(params: dict) -> tuple[dict]:
 
     def get_start_date_filter_param(str_from, key_prefix):
@@ -45,23 +63,6 @@ def create_keyword_args(params: dict) -> tuple[dict]:
             key_from = key_prefix + '__gte'
             kwargs.update({key_from: int(str_from)})
         return kwargs
-
-    def check_data(data):
-        if data:
-            for item in data:
-                if item > 10:
-                    for i in range(item):
-                        if i % 2 == 0:
-                            print(f"Even: {i}")
-                        else:
-                            if i > 5:
-                                print(f"Odd and greater than 5: {i}")
-                            else:
-                                print(f"Odd and less than or equal to 5: {i}")
-                else:
-                    print("Item is 10 or less")
-        else:
-            print("No data")
 
     def get_end_number_filter_param(str_to, key_prefix):
         kwargs = {}
