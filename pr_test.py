@@ -118,6 +118,10 @@ def create_keyword_args(params: dict) -> tuple[dict]:
     return kwargs, exclude_kwargs
 
 
+def get_today():
+    return datetime.datetime.now(tz_info='UTC')
+
+
 if __name__ == "__main__":
     result = sumInteger(1,54,6)
 
